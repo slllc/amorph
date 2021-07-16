@@ -344,7 +344,7 @@ func Test008(t *testing.T) {
 }
 
 func Test009(t *testing.T) {
-	adata0, err := amorph.NewAmorphFromString(
+	adata0, err := amorph.NewAmorphFromJSONString(
 		`{
 			"employee":{ 
 				"name":"John" 
@@ -354,7 +354,7 @@ func Test009(t *testing.T) {
 	if err != nil {
 		t.FailNow()
 	}
-	adata1, err := amorph.NewAmorphFromString(
+	adata1, err := amorph.NewAmorphFromJSONString(
 		`{
 			"employee":{
 				"name":"Johny"
@@ -372,13 +372,13 @@ func Test009(t *testing.T) {
 }
 
 func Test010(t *testing.T) {
-	adata0, err := amorph.NewAmorphFromString(
+	adata0, err := amorph.NewAmorphFromJSONString(
 		`[ "foo", {"why": "yknot", "where": "wherever" }, "bar", "baz" ]`,
 	)
 	if err != nil {
 		t.FailNow()
 	}
-	adata1, err := amorph.NewAmorphFromString(
+	adata1, err := amorph.NewAmorphFromJSONString(
 		`[ "foo", {"why": " frayed knot", "where": "wherever"}, "bar", "xxx", "baz" ]`,
 	)
 	if err != nil {

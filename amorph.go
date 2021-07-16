@@ -41,9 +41,27 @@ func NewAmorphFromFile(filename string) (amorphOut Amorph, err error) {
 	return NewAmorphFromReader(fp)
 }
 
-// NewAmorphFromString builds an Amorph from a json string
-func NewAmorphFromString(js string) (amorphOut Amorph, err error) {
+func NewEmptySliceAmorph() (amorphOut Amorph) {
+	return make([]interface{}, 0)
+}
+
+func NewEmptyMapAmorph() (amorphOut Amorph) {
+	return make(map[string]interface{})
+}
+
+// NewAmorphFromJSONString builds an Amorph from a json string
+func NewAmorphFromJSONString(js string) (amorphOut Amorph, err error) {
 	err = json.Unmarshal([]byte(js), &amorphOut)
+	return //
+}
+
+func OverlayFromJSONString(amorphIn Amorph, js string) (amorphout Amorph, err error) {
+	amorphout, err = NewAmorphFromJSONString(js)
+	if err != nil {
+		return //
+	}
+	// Test if this actually does the overlay correctly
+	err = json.Unmarshal([]byte(js), &amorphout)
 	return //
 }
 
