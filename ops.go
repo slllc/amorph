@@ -82,7 +82,20 @@ func GetMapEntryString(a Amorph, key string) (val string, ok bool) {
 	if !ok {
 		return
 	}
-	val, ok = valI.(string)
+	ok = false
+	switch valT := valI.(type) {
+	case string:
+		val = valT
+		ok = true
+	case []string:
+		if len(valT) < 1 {
+			return //
+		}
+		val = valT[0] // ok is already set
+		ok = true
+	default:
+		panic("")
+	}
 	return //
 }
 
