@@ -39,7 +39,7 @@ func SetMapEntryTime(a Amorph, key string, val time.Time) (ok bool) {
 }
 
 func GetMapEntry(a Amorph, key string) (val Amorph, ok bool) {
-	val, ok = a.(map[string]interface{})
+	val, ok = a.(map[string]interface{})[key]
 	return //
 }
 
