@@ -47,6 +47,27 @@ func GetMapEntry(a Amorph, key string) (val Amorph, ok bool) {
 	return //
 }
 
+func GetMapEntryStringUint(a Amorph, key string) (val uint, ok bool) {
+	var valI interface{}
+	valI, ok = GetMapEntry(a, key)
+	if !ok {
+		return
+	}
+	val, ok = valI.(uint)
+	if ok {
+		return
+	}
+	_, ok = valI.(string)
+	if ok {
+		val64, err := strconv.ParseUint(valI.(string), 10, 64)
+		ok = err == nil
+		if ok {
+			val = uint(val64)
+		}
+	}
+	return //
+}
+
 func GetMapEntryUint(a Amorph, key string) (val uint, ok bool) {
 	var valI interface{}
 	valI, ok = GetMapEntry(a, key)
@@ -88,11 +109,14 @@ func GetMapEntryString(a Amorph, key string) (val string, ok bool) {
 		val = valT
 		ok = true
 	case []string:
-		if len(valT) < 1 {
-			return //
-		}
-		val = valT[0] // ok is already set
-		ok = true
+		panic("")
+		/*
+			if len(valT) < 1 {
+				return //
+			}
+			val = valT[0] // ok is already set
+			ok = true
+		*/
 	default:
 		panic("")
 	}
