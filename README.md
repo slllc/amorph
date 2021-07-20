@@ -1,6 +1,6 @@
 # Introduction
 
-Decoding json into an interface{} produces an hierarchical arrangement of four data types: float64, string are 'primative types' and form 'leaf nodes' in the hierarchy, []interface, and map[string]interface{} are compound types and compose layers of the hierarchy around the primative and compound types.
+Decoding json into an interface{} produces an hierarchical arrangement of four data types: float64, string are 'primitive types' and form 'leaf nodes' in the hierarchy, []interface, and map[string]interface{} are compound types and compose layers of the hierarchy around the primitive and compound types.
 
 This hierarchical arrangement has no name that I've been able to find, so I label it Amorph which is short for Amorphic. The four types listed above will be referred to as the A4 types.
 

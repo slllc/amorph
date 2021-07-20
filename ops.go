@@ -108,15 +108,19 @@ func GetMapEntryString(a Amorph, key string) (val string, ok bool) {
 	case string:
 		val = valT
 		ok = true
-	case []string:
-		panic("")
-		/*
-			if len(valT) < 1 {
-				return //
-			}
-			val = valT[0] // ok is already set
-			ok = true
-		*/
+	case []interface{}:
+		ok = len(valT) > 0
+		if !ok {
+			return //
+		}
+		val, ok = valT[0].(string)
+		return //
+	case []string: // TODO reconcile this
+		ok = len(valT) > 0
+		if !ok {
+			return //
+		}
+		val = valT[0] // ok is already set
 	default:
 		panic("")
 	}
