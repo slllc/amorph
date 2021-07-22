@@ -135,13 +135,13 @@ func NewSliceWalkIter() WalkIter {
 // function for each node.
 func Walk(in interface{}, wfunc func(iter WalkIter) error) error {
 	iter := NewSliceWalkIter()
-        wp := NewWalkPos(nil, in)
-        iter = iter.Append(wp)
+	wp := NewWalkPos(nil, in)
+	iter = iter.Append(wp)
 	return walk(nil, in, iter, wfunc)
 }
 
 func walk(key interface{}, val interface{}, iter WalkIter, wfunc func(iter WalkIter) error) (err error) {
-	// fmt.Println("len(iter) = ", iter.Len())
+	// fmt.Debugln("len(iter) = ", iter.Len())
 	var niter WalkIter
 
 	switch typedIn := val.(type) {
